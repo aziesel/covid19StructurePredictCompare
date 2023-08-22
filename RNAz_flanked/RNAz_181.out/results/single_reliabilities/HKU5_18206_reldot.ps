@@ -1,0 +1,445 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title: RNA Dot Plot
+%%Creator: MLocARNA
+%%CreationDate: Wed May 13 11:16:08 2009
+%%BoundingBox: 66 211 518 662
+%%DocumentFonts: Helvetica
+%%Pages: 1
+%%EndComments
+
+%Options:
+%
+%This file contains the square roots of the base pair probabilities in the form
+% i  j  sqrt(p(i,j)) ubox
+
+%%BeginProlog
+/DPdict 100 dict def
+DPdict begin
+/logscale false def
+/lpmin 1e-05 log def
+
+/box { %size x y box - draws box centered on x,y
+   2 index 0.5 mul sub            % x -= 0.5
+   exch 2 index 0.5 mul sub exch  % y -= 0.5
+   3 -1 roll dup rectfill
+} bind def
+
+/ubox {
+   logscale {
+      log dup add lpmin div 1 exch sub dup 0 lt { pop 0 } if
+   } if
+   3 1 roll
+   exch len exch sub 1 add box
+} bind def
+
+/lbox {
+   3 1 roll
+   len exch sub 1 add box
+} bind def
+
+/drawseq {
+% print sequence along all 4 sides
+[ [0.7 -0.3 0 ]
+  [0.7 0.7 len add 0]
+  [-0.3 len sub -0.4 -90]
+  [-0.3 len sub 0.7 len add -90]
+] {
+   gsave
+    aload pop rotate translate
+    0 1 len 1 sub {
+     dup 0 moveto
+     sequence exch 1 getinterval
+     show
+    } for
+   grestore
+  } forall
+} bind def
+
+/drawgrid{
+  0.01 setlinewidth
+  len log 0.9 sub cvi 10 exch exp  % grid spacing
+  dup 1 gt {
+     dup dup 20 div dup 2 array astore exch 40 div setdash
+  } { [0.3 0.7] 0.1 setdash } ifelse
+  0 exch len {
+     dup dup
+     0 moveto
+     len lineto
+     dup
+     len exch sub 0 exch moveto
+     len exch len exch sub lineto
+     stroke
+  } for
+  [] 0 setdash
+  0.04 setlinewidth
+  currentdict /cutpoint known {
+    cutpoint 1 sub
+    dup dup -1 moveto len 1 add lineto
+    len exch sub dup
+    -1 exch moveto len 1 add exch lineto
+    stroke
+  } if
+  0.5 neg dup translate
+} bind def
+
+end
+%%EndProlog
+DPdict begin
+%delete next line to get rid of title
+270 665 moveto /Helvetica findfont 14 scalefont setfont (dot.ps) show
+
+/sequence { (\
+CAUGACUUCUCAAGCACUCUUCGAUUCGCUCGAGU------UUGCUGAGGUUUCUCUUAAUAACU--ACAA-GCUUCAGUCACAGAUAGUAACGGGCUUGUACAAAGAUUGCUCCAGAGAGUCAUCUGGACU\
+) } def
+/len { sequence length } bind def
+
+72 216 translate
+72 6 mul len 1 add div dup scale
+/Helvetica findfont 0.95 scalefont setfont
+
+drawseq
+0.5 dup translate
+% draw diagonal
+0.04 setlinewidth
+0 len moveto len 0 lineto stroke
+
+drawgrid
+
+%data starts here
+0 0 0 setrgbcolor 24 42 0.0136014705087354 ubox
+0 0 0 setrgbcolor 47 114 0.0267574288749872 ubox
+0 0 0 setrgbcolor 23 43 0.0182117178395303 ubox
+0 0 0 setrgbcolor 89 97 0.0288442657501741 ubox
+0 0 0 setrgbcolor 23 30 0.1374657533109 ubox
+0 0 0 setrgbcolor 8 118 0.126688594593199 ubox
+0 0 0 setrgbcolor 3 124 0.300555042102663 ubox
+0 0 0 setrgbcolor 6 121 0.306594194335118 ubox
+0 0 0 setrgbcolor 7 106 0.226610900002626 ubox
+0 0 0 setrgbcolor 70 99 0.453234670636158 ubox
+0 0 0 setrgbcolor 106 113 0.0904515524097477 ubox
+0 0 0 setrgbcolor 107 114 0.101140413946816 ubox
+0 0 0 setrgbcolor 111 132 0.0277188263339798 ubox
+0 0 0 setrgbcolor 9 49 0.236995077304713 ubox
+0 0 0 setrgbcolor 43 91 0.0194079021706795 ubox
+0 0 0 setrgbcolor 111 131 0.188402936990554 ubox
+0 0 0 setrgbcolor 30 95 0.269876514971817 ubox
+0 0 0 setrgbcolor 51 63 0.0350249434926977 ubox
+0 0 0 setrgbcolor 23 31 0.420442029297738 ubox
+0 0 0 setrgbcolor 14 112 0.310957178188037 ubox
+0 0 0 setrgbcolor 8 120 0.218573896733652 ubox
+0 0 0 setrgbcolor 42 62 0.0787400787401181 ubox
+0 0 0 setrgbcolor 3 104 0.0103762549441823 ubox
+0 0 0 setrgbcolor 65 106 0.102417853261366 ubox
+0 0 0 setrgbcolor 92 101 0.0112768198826915 ubox
+0 0 0 setrgbcolor 4 56 0.058309518948453 ubox
+0 0 0 setrgbcolor 68 101 0.498568450666506 ubox
+0 0 0 setrgbcolor 4 52 0.119791485507109 ubox
+0 0 0 setrgbcolor 57 106 0.276171142590967 ubox
+0 0 0 setrgbcolor 27 100 0.0323264597504892 ubox
+0 0 0 setrgbcolor 14 45 0.436661005052355 ubox
+0 0 0 setrgbcolor 1 128 0.0938971068066885 ubox
+0 0 0 setrgbcolor 5 122 0.307950212426186 ubox
+0 0 0 setrgbcolor 24 35 0.0659545297913646 ubox
+0 0 0 setrgbcolor 2 55 0.163902054085156 ubox
+0 0 0 setrgbcolor 50 64 0.034192153095898 ubox
+0 0 0 setrgbcolor 9 119 0.284076636373591 ubox
+0 0 0 setrgbcolor 61 102 0.0225831795812724 ubox
+0 0 0 setrgbcolor 90 102 0.014142135623731 ubox
+0 0 0 setrgbcolor 9 117 0.143178210632764 ubox
+0 0 0 setrgbcolor 34 81 0.010295630140987 ubox
+0 0 0 setrgbcolor 42 91 0.0239791576165636 ubox
+0 0 0 setrgbcolor 62 101 0.0768653584739792 ubox
+0 0 0 setrgbcolor 34 90 0.0265204323745548 ubox
+0 0 0 setrgbcolor 75 96 0.0420868744384755 ubox
+0 0 0 setrgbcolor 94 99 0.0113578166916005 ubox
+0 0 0 setrgbcolor 18 108 0.304138236114216 ubox
+0 0 0 setrgbcolor 5 51 0.129743336373524 ubox
+0 0 0 setrgbcolor 28 97 0.269567554922076 ubox
+0 0 0 setrgbcolor 62 110 0.130219430193808 ubox
+0 0 0 setrgbcolor 42 60 0.0180277563773199 ubox
+0 0 0 setrgbcolor 123 129 0.0129743336373524 ubox
+0 0 0 setrgbcolor 54 107 0.0622470481227825 ubox
+0 0 0 setrgbcolor 93 100 0.0148884742894182 ubox
+0 0 0 setrgbcolor 58 68 0.0891365058024302 ubox
+0 0 0 setrgbcolor 30 48 0.234964890994378 ubox
+0 0 0 setrgbcolor 20 33 0.266015350434269 ubox
+0 0 0 setrgbcolor 55 108 0.241393627366866 ubox
+0 0 0 setrgbcolor 58 111 0.131517109153144 ubox
+0 0 0 setrgbcolor 10 48 0.498546721314395 ubox
+0 0 0 setrgbcolor 76 95 0.0965228815704684 ubox
+0 0 0 setrgbcolor 42 63 0.035 ubox
+0 0 0 setrgbcolor 8 105 0.0163299316185545 ubox
+0 0 0 setrgbcolor 35 89 0.0223606797749979 ubox
+0 0 0 setrgbcolor 44 58 0.0234875853732704 ubox
+0 0 0 setrgbcolor 77 94 0.134783777461038 ubox
+0 0 0 setrgbcolor 19 32 0.163341156275243 ubox
+0 0 0 setrgbcolor 43 84 0.222224856095502 ubox
+0 0 0 setrgbcolor 5 55 0.0571547606649409 ubox
+0 0 0 setrgbcolor 51 111 0.0294392028877595 ubox
+0 0 0 setrgbcolor 103 129 0.014142135623731 ubox
+0 0 0 setrgbcolor 43 88 0.0513160143944688 ubox
+0 0 0 setrgbcolor 44 80 0.423560021327163 ubox
+0 0 0 setrgbcolor 55 106 0.0849172145876991 ubox
+0 0 0 setrgbcolor 117 126 0.528779412105527 ubox
+0 0 0 setrgbcolor 57 116 0.131149405895211 ubox
+0 0 0 setrgbcolor 104 110 0.0887944255007036 ubox
+0 0 0 setrgbcolor 20 106 0.304420827145581 ubox
+0 0 0 setrgbcolor 111 122 0.0504975246918104 ubox
+0 0 0 setrgbcolor 32 93 0.266770812996225 ubox
+0 0 0 setrgbcolor 34 45 0.227697533290694 ubox
+0 0 0 setrgbcolor 46 78 0.425709593893928 ubox
+0 0 0 setrgbcolor 69 100 0.432871805503662 ubox
+0 0 0 setrgbcolor 10 116 0.142009389360939 ubox
+0 0 0 setrgbcolor 77 95 0.175905419662575 ubox
+0 0 0 setrgbcolor 50 55 0.0670820393249937 ubox
+0 0 0 setrgbcolor 112 121 0.208850823954962 ubox
+0 0 0 setrgbcolor 65 102 0.279284800875379 ubox
+0 0 0 setrgbcolor 35 86 0.235937414017644 ubox
+0 0 0 setrgbcolor 33 87 0.0292973263854116 ubox
+0 0 0 setrgbcolor 48 76 0.271108834234519 ubox
+0 0 0 setrgbcolor 107 112 0.0941143807644011 ubox
+0 0 0 setrgbcolor 15 44 0.46108603680152 ubox
+0 0 0 setrgbcolor 5 52 0.0267706306736817 ubox
+0 0 0 setrgbcolor 12 46 0.427852583646906 ubox
+0 0 0 setrgbcolor 81 85 0.202046199337346 ubox
+0 0 0 setrgbcolor 23 27 0.0995244526067171 ubox
+0 0 0 setrgbcolor 16 43 0.322733636300898 ubox
+0 0 0 setrgbcolor 23 103 0.222880648180441 ubox
+0 0 0 setrgbcolor 61 108 0.132498742132394 ubox
+0 0 0 setrgbcolor 5 10 0.0603145919326327 ubox
+0 0 0 setrgbcolor 108 125 0.0538249632295896 ubox
+0 0 0 setrgbcolor 46 59 0.085537516135709 ubox
+0 0 0 setrgbcolor 24 53 0.0401663208837121 ubox
+0 0 0 setrgbcolor 32 46 0.325748369144037 ubox
+0 0 0 setrgbcolor 2 58 0.100711882781196 ubox
+0 0 0 setrgbcolor 18 48 0.0140830867828517 ubox
+0 0 0 setrgbcolor 44 90 0.0146059348668044 ubox
+0 0 0 setrgbcolor 59 65 0.0398120584747888 ubox
+0 0 0 setrgbcolor 2 53 0.0109772492000501 ubox
+0 0 0 setrgbcolor 26 33 0.0686779925934551 ubox
+0 0 0 setrgbcolor 28 93 0.180225321935256 ubox
+0 0 0 setrgbcolor 15 34 0.127875199576254 ubox
+0 0 0 setrgbcolor 44 61 0.0488193950529227 ubox
+0 0 0 setrgbcolor 18 33 0.206431990414923 ubox
+0 0 0 setrgbcolor 13 113 0.314204445120265 ubox
+0 0 0 setrgbcolor 52 62 0.0342866349082748 ubox
+0 0 0 setrgbcolor 4 123 0.307950212426186 ubox
+0 0 0 setrgbcolor 34 93 0.0193218356615859 ubox
+0 0 0 setrgbcolor 43 82 0.0841625411530173 ubox
+0 0 0 setrgbcolor 57 68 0.0648074069840786 ubox
+0 0 0 setrgbcolor 32 99 0.0111504857891185 ubox
+0 0 0 setrgbcolor 27 47 0.0593035974175823 ubox
+0 0 0 setrgbcolor 42 95 0.0110529030877262 ubox
+0 0 0 setrgbcolor 50 61 0.0243926218353009 ubox
+0 0 0 setrgbcolor 90 96 0.0443734154646676 ubox
+0 0 0 setrgbcolor 20 34 0.392699206348405 ubox
+0 0 0 setrgbcolor 10 118 0.27994043384263 ubox
+0 0 0 setrgbcolor 80 91 0.0221359436211787 ubox
+0 0 0 setrgbcolor 47 77 0.396097997133706 ubox
+0 0 0 setrgbcolor 53 70 0.239443799947573 ubox
+0 0 0 setrgbcolor 4 11 0.0353838475390491 ubox
+0 0 0 setrgbcolor 23 42 0.0580229839517641 ubox
+0 0 0 setrgbcolor 55 71 0.00921050125309873 ubox
+0 0 0 setrgbcolor 61 106 0.0899090280969232 ubox
+0 0 0 setrgbcolor 19 107 0.307730853723401 ubox
+0 0 0 setrgbcolor 57 63 0.0962351287212731 ubox
+0 0 0 setrgbcolor 47 58 0.091469484893415 ubox
+0 0 0 setrgbcolor 74 96 0.526064983311631 ubox
+0 0 0 setrgbcolor 27 94 0.0124766448481419 ubox
+0 0 0 setrgbcolor 50 54 0.0130384048104053 ubox
+0 0 0 setrgbcolor 35 92 0.0240138848724372 ubox
+0 0 0 setrgbcolor 35 82 0.0509901951359278 ubox
+0 0 0 setrgbcolor 2 127 0.076702889993359 ubox
+0 0 0 setrgbcolor 58 63 0.270570693165391 ubox
+0 0 0 setrgbcolor 43 94 0.0104721853816034 ubox
+0 0 0 setrgbcolor 2 110 0.119683819569174 ubox
+0 0 0 setrgbcolor 23 99 0.0467261525629206 ubox
+0 0 0 setrgbcolor 42 88 0.022949219304078 ubox
+0 0 0 setrgbcolor 35 96 0.0112546286774228 ubox
+0 0 0 setrgbcolor 33 46 0.0743002916100154 ubox
+0 0 0 setrgbcolor 43 86 0.0173205080756888 ubox
+0 0 0 setrgbcolor 91 101 0.0103279555898865 ubox
+0 0 0 setrgbcolor 43 62 0.04618802153517 ubox
+0 0 0 setrgbcolor 118 125 0.571602863300503 ubox
+0 0 0 setrgbcolor 42 86 0.036514837167011 ubox
+0 0 0 setrgbcolor 53 120 0.0712572803298021 ubox
+0 0 0 setrgbcolor 35 63 0.0840634680861233 ubox
+0 0 0 setrgbcolor 42 89 0.0532290647422377 ubox
+0 0 0 setrgbcolor 58 108 0.0365919390030099 ubox
+0 0 0 setrgbcolor 32 90 0.0178418982547635 ubox
+0 0 0 setrgbcolor 106 132 0.0159164485150844 ubox
+0 0 0 setrgbcolor 14 35 0.0277488738510232 ubox
+0 0 0 setrgbcolor 49 54 0.101980390271856 ubox
+0 0 0 setrgbcolor 17 49 0.0139642400437689 ubox
+0 0 0 setrgbcolor 2 57 0.0990410689226107 ubox
+0 0 0 setrgbcolor 8 119 0.0721110255092798 ubox
+0 0 0 setrgbcolor 80 86 0.173599395160237 ubox
+0 0 0 setrgbcolor 42 92 0.019192012227313 ubox
+0 0 0 setrgbcolor 48 113 0.0455801491879963 ubox
+0 0 0 setrgbcolor 31 47 0.310091115641838 ubox
+0 0 0 setrgbcolor 24 98 0.0460072458061409 ubox
+0 0 0 setrgbcolor 55 70 0.0102550800419435 ubox
+0 0 0 setrgbcolor 61 104 0.213379552284968 ubox
+0 0 0 setrgbcolor 25 96 0.22401636844957 ubox
+0 0 0 setrgbcolor 34 83 0.0533853912601566 ubox
+0 0 0 setrgbcolor 35 88 0.0313847096529504 ubox
+0 0 0 setrgbcolor 50 56 0.0162788205960997 ubox
+0 0 0 setrgbcolor 58 62 0.143255482733937 ubox
+0 0 0 setrgbcolor 58 104 0.11536124421428 ubox
+0 0 0 setrgbcolor 49 56 0.0920144916122818 ubox
+0 0 0 setrgbcolor 31 100 0.0108857705285386 ubox
+0 0 0 setrgbcolor 15 111 0.310685720088109 ubox
+0 0 0 setrgbcolor 52 59 0.0253968501984006 ubox
+0 0 0 setrgbcolor 47 56 0.102306728354819 ubox
+0 0 0 setrgbcolor 57 128 0.00978945010372561 ubox
+0 0 0 setrgbcolor 48 57 0.0920144916122818 ubox
+0 0 0 setrgbcolor 61 105 0.0650198687581983 ubox
+0 0 0 setrgbcolor 49 112 0.186598499458061 ubox
+0 0 0 setrgbcolor 77 89 0.0976417772608972 ubox
+0 0 0 setrgbcolor 57 62 0.101531932579525 ubox
+0 0 0 setrgbcolor 6 107 0.190361060443919 ubox
+0 0 0 setrgbcolor 42 59 0.0149443411809733 ubox
+0 0 0 setrgbcolor 33 98 0.0112546286774228 ubox
+0 0 0 setrgbcolor 4 54 0.39470073051195 ubox
+0 0 0 setrgbcolor 81 89 0.0995264621428224 ubox
+0 0 0 setrgbcolor 27 32 0.0687992248018343 ubox
+0 0 0 setrgbcolor 9 50 0.00913783344124853 ubox
+0 0 0 setrgbcolor 11 117 0.27443628616979 ubox
+0 0 0 setrgbcolor 80 92 0.512713370217708 ubox
+0 0 0 setrgbcolor 82 90 0.287228132326901 ubox
+0 0 0 setrgbcolor 119 123 0.141468842270421 ubox
+0 0 0 setrgbcolor 79 87 0.125139455541941 ubox
+0 0 0 setrgbcolor 59 110 0.147382947905561 ubox
+0 0 0 setrgbcolor 48 55 0.102469507659596 ubox
+0 0 0 setrgbcolor 103 128 0.0873544503731779 ubox
+0 0 0 setrgbcolor 114 129 0.394751039686196 ubox
+0 0 0 setrgbcolor 60 109 0.122285322095499 ubox
+0 0 0 setrgbcolor 51 73 0.270493376382245 ubox
+0 0 0 setrgbcolor 25 34 0.0675771164423777 ubox
+0 0 0 setrgbcolor 53 108 0.0586371611409238 ubox
+0 0 0 setrgbcolor 57 108 0.0111430097669645 ubox
+0 0 0 setrgbcolor 55 118 0.142506724987513 ubox
+0 0 0 setrgbcolor 34 87 0.222830802777952 ubox
+0 0 0 setrgbcolor 113 120 0.238109810101698 ubox
+0 0 0 setrgbcolor 22 28 0.0198746069143518 ubox
+0 0 0 setrgbcolor 108 113 0.175659092183316 ubox
+0 0 0 setrgbcolor 5 53 0.436920473312936 ubox
+0 0 0 setrgbcolor 42 84 0.0278986260115679 ubox
+0 0 0 setrgbcolor 114 119 0.0901811787459002 ubox
+0 0 0 setrgbcolor 116 127 0.434108362048003 ubox
+0 0 0 setrgbcolor 115 128 0.492279612280122 ubox
+0 0 0 setrgbcolor 21 33 0.392085237331544 ubox
+0 0 0 setrgbcolor 43 59 0.0232737334062816 ubox
+0 0 0 setrgbcolor 11 44 0.406593116436239 ubox
+0 0 0 setrgbcolor 50 112 0.0298049212938624 ubox
+0 0 0 setrgbcolor 21 104 0.0218708329364323 ubox
+0 0 0 setrgbcolor 121 131 0.0775866182620001 ubox
+0 0 0 setrgbcolor 33 90 0.0543139024560011 ubox
+0 0 0 setrgbcolor 89 103 0.0142009389360939 ubox
+0 0 0 setrgbcolor 9 47 0.136638696324772 ubox
+0 0 0 setrgbcolor 24 99 0.134464164990776 ubox
+0 0 0 setrgbcolor 88 98 0.00981495457622364 ubox
+0 0 0 setrgbcolor 24 30 0.431997492276672 ubox
+0 0 0 setrgbcolor 109 124 0.0494974746830583 ubox
+0 0 0 setrgbcolor 16 35 0.0197061750051433 ubox
+0 0 0 setrgbcolor 105 109 0.0402492235949962 ubox
+0 0 0 setrgbcolor 51 60 0.0254296414970142 ubox
+0 0 0 setrgbcolor 49 57 0.0143178210632764 ubox
+0 0 0 setrgbcolor 1 129 0.0308760964717584 ubox
+0 0 0 setrgbcolor 29 44 0.0494974746830583 ubox
+0 0 0 setrgbcolor 22 32 0.418717287279457 ubox
+0 0 0 setrgbcolor 13 42 0.159507147175291 ubox
+0 0 0 setrgbcolor 56 111 0.0166833250083229 ubox
+0 0 0 setrgbcolor 107 126 0.0583552768250938 ubox
+0 0 0 setrgbcolor 19 47 0.0140830867828517 ubox
+0 0 0 setrgbcolor 122 130 0.287520144221815 ubox
+0 0 0 setrgbcolor 16 110 0.307678918138157 ubox
+0 0 0 setrgbcolor 6 50 0.131021626713557 ubox
+0 0 0 setrgbcolor 43 60 0.0228400233508345 ubox
+0 0 0 setrgbcolor 22 44 0.0214476105895272 ubox
+0 0 0 setrgbcolor 34 64 0.0860232526704263 ubox
+0 0 0 setrgbcolor 26 48 0.117533612213698 ubox
+0 0 0 setrgbcolor 8 48 0.16444963768076 ubox
+0 0 0 setrgbcolor 21 105 0.277609729056218 ubox
+0 0 0 setrgbcolor 28 45 0.0493288286231624 ubox
+0 0 0 setrgbcolor 42 85 0.230593509593541 ubox
+0 0 0 setrgbcolor 26 100 0.0228035085019828 ubox
+0 0 0 setrgbcolor 56 129 0.0106536378763313 ubox
+0 0 0 setrgbcolor 25 100 0.217178881723492 ubox
+0 0 0 setrgbcolor 64 107 0.146653219080478 ubox
+0 0 0 setrgbcolor 84 90 0.0726203598632413 ubox
+0 0 0 setrgbcolor 113 130 0.245967477524977 ubox
+0 0 0 setrgbcolor 58 105 0.267913232222673 ubox
+0 0 0 setrgbcolor 55 130 0.00987420882906575 ubox
+0 0 0 setrgbcolor 23 54 0.0401663208837121 ubox
+0 0 0 setrgbcolor 19 34 0.291831572429487 ubox
+0 0 0 setrgbcolor 48 58 0.012890565025113 ubox
+0 0 0 setrgbcolor 4 53 0.025 ubox
+0 0 0 setrgbcolor 61 111 0.109736958222834 ubox
+0 0 0 setrgbcolor 35 60 0.0153839743456191 ubox
+0 0 0 setrgbcolor 11 47 0.476589620812987 ubox
+0 0 0 setrgbcolor 25 102 0.0246644143115812 ubox
+0 0 0 setrgbcolor 21 32 0.167392751734755 ubox
+0 0 0 setrgbcolor 43 85 0.0360786178597056 ubox
+0 0 0 setrgbcolor 83 89 0.463034196001404 ubox
+0 0 0 setrgbcolor 20 105 0.0168325082306035 ubox
+0 0 0 setrgbcolor 35 85 0.0294492218346541 ubox
+0 0 0 setrgbcolor 46 88 0.00995824616419311 ubox
+0 0 0 setrgbcolor 107 131 0.0916879672221679 ubox
+0 0 0 setrgbcolor 29 96 0.270185121722126 ubox
+0 0 0 setrgbcolor 52 71 0.262995563967658 ubox
+0 0 0 setrgbcolor 1 111 0.0118743420870379 ubox
+0 0 0 setrgbcolor 33 65 0.0564210362660358 ubox
+0 0 0 setrgbcolor 77 85 0.0140237893119751 ubox
+0 0 0 setrgbcolor 3 12 0.0334394726832426 ubox
+0 0 0 setrgbcolor 26 95 0.012369316876853 ubox
+0 0 0 setrgbcolor 42 82 0.0848737297401263 ubox
+0 0 0 setrgbcolor 7 49 0.12 ubox
+0 0 0 setrgbcolor 106 127 0.0593385203725202 ubox
+0 0 0 setrgbcolor 76 86 0.0133541504160067 ubox
+0 0 0 setrgbcolor 7 119 0.0776745346515403 ubox
+0 0 0 setrgbcolor 54 119 0.0989675872866128 ubox
+0 0 0 setrgbcolor 2 125 0.269876514971817 ubox
+0 0 0 setrgbcolor 13 46 0.326513399418768 ubox
+0 0 0 setrgbcolor 71 98 0.453234670636158 ubox
+0 0 0 setrgbcolor 49 65 0.0115253344130803 ubox
+0 0 0 setrgbcolor 7 121 0.0297769485788364 ubox
+0 0 0 setrgbcolor 73 97 0.545395422300799 ubox
+0 0 0 setrgbcolor 4 103 0.0113651514141549 ubox
+0 0 0 setrgbcolor 58 107 0.0115181016954473 ubox
+0 0 0 setrgbcolor 45 79 0.484027123895621 ubox
+0 0 0 setrgbcolor 45 89 0.0134783777461038 ubox
+0 0 0 setrgbcolor 56 117 0.119637856327614 ubox
+0 0 0 setrgbcolor 49 75 0.307536989645148 ubox
+0 0 0 setrgbcolor 35 91 0.00976387901058454 ubox
+0 0 0 setrgbcolor 78 90 0.0126227308191743 ubox
+0 0 0 setrgbcolor 7 120 0.226568606239552 ubox
+0 0 0 setrgbcolor 44 87 0.0208965706915433 ubox
+0 0 0 setrgbcolor 76 94 0.458507179151355 ubox
+0 0 0 setrgbcolor 24 101 0.219848432637882 ubox
+0 0 0 setrgbcolor 56 107 0.294285292417636 ubox
+0 0 0 setrgbcolor 103 111 0.105621336228371 ubox
+0 0 0 setrgbcolor 22 100 0.0469041575982343 ubox
+0 0 0 setrgbcolor 63 109 0.141711561513755 ubox
+0 0 0 setrgbcolor 55 68 0.0716472842006822 ubox
+0 0 0 setrgbcolor 27 50 0.0380350715349225 ubox
+0 0 0 setrgbcolor 35 84 0.0263944438597722 ubox
+0 0 0 setrgbcolor 50 74 0.304642960419789 ubox
+0 0 0 setrgbcolor 75 95 0.426284490295703 ubox
+0 0 0 setrgbcolor 79 93 0.494245553006466 ubox
+0 0 0 setrgbcolor 31 94 0.269876514971817 ubox
+0 0 0 setrgbcolor 29 49 0.202690239857111 ubox
+0 0 0 setrgbcolor 34 61 0.0151107026088575 ubox
+0 0 0 setrgbcolor 8 50 0.199164923283862 ubox
+0 0 0 setrgbcolor 23 101 0.0166332999331662 ubox
+0 0 0 setrgbcolor 44 83 0.187527775720469 ubox
+0 0 0 setrgbcolor 4 131 0.161922718191941 ubox
+0 0 0 setrgbcolor 34 97 0.0112768198826915 ubox
+0 0 0 setrgbcolor 44 81 0.0907377172587746 ubox
+0 0 0 setrgbcolor 17 34 0.201646968734965 ubox
+0 0 0 setrgbcolor 43 89 0.015545631755148 ubox
+0 0 0 setrgbcolor 12 43 0.356600509440653 ubox
+
+showpage
+end
+%%EOF

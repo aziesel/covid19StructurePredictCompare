@@ -1,5 +1,5 @@
 # covid19StructurePredictCompare
-Data files produced in association with our 2023 paper, Discovering Structured Regions of the SARS-CoV-2 Genome Through Computational Prediction and Comparisons.
+Data files produced in association with our 2023 paper, Unveiling Hidden Structural Patterns in the SARS-CoV-2 Genome: Computational Insights and Comparative Analysis.
 
 
 Index:
